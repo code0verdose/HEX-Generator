@@ -51,6 +51,23 @@ function getNegativeColor(hexColor) {
   return invertedHex;
 }
 
+function updateFavicon(hexColor) {
+  const favicon = document.getElementById("favicon");
+
+  const svgString = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+      <circle cx="50" cy="50" r="50" fill="${hexColor}" />
+    </svg>
+  `;
+
+
+  // Convert the SVG string to a data URI
+  const svgDataUri = `data:image/svg+xml;base64,${btoa(svgString)}`;
+
+  // Set the data URI as the href for the favicon
+  favicon.href = svgDataUri;
+}
+
 function renderBody() {
   const hex = generateHex();
   document.body.style.backgroundColor = hex;
@@ -61,7 +78,8 @@ function renderBody() {
   titleNode.textContent = hex;
   titleNode.style.color = negativeHex;
 
-   document.title = `${hex} - HEX Generator`;
+  document.title = `${hex} - HEX Generator`;
+  updateFavicon(hex);
 }
 
 renderBody();
