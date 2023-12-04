@@ -60,6 +60,8 @@ function renderBody() {
 
   titleNode.textContent = hex;
   titleNode.style.color = negativeHex;
+
+   document.title = `${hex} - HEX Generator`;
 }
 
 renderBody();
