@@ -46,3 +46,6 @@ h1 {
   overflow: scroll;
 }
 
+strong {
+  font-size: 2em;
+}
