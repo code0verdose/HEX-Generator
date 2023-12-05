@@ -4,9 +4,12 @@
   box-sizing: border-box;
 }
 
+html {
+  cursor: pointer;
+}
+
 body {
   min-height: 100svh;
-  cursor: pointer;
   font-family: "JetBrains Mono", monospace;
   display: flex;
   align-items: center;
@@ -35,6 +38,13 @@ h1 {
   overflow: hidden;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
   flex-shrink: 0;
+  transition: 0.3s;
+}
+
+.his-card:hover {
+  cursor: pointer;
+  transform: translateY(-3px) scale(1.2);
+  margin: 0 20px;
 }
 
 .history-track {
