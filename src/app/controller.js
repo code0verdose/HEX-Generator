@@ -4,15 +4,11 @@ import {
   setGenerationsHistory,
 } from "./model.js";
 
-import {
-  titleNode,
-  updateFavicon,
-  renderHistory,
-} from "./view.js";
-
+import { titleNode, updateFavicon, renderHistory } from "./view.js";
 
 const createCard = ({ hex, negativeHex }) => {
   const cardNode = document.createElement("div");
+  cardNode.addEventListener("click", (e) => e.stopPropagation());
   cardNode.className = "his-card";
 
   cardNode.innerHTML = `<p class="his-text" style="background: ${hex}"><strong style="color: ${negativeHex}">${hex.toUpperCase()}</strong></p>
