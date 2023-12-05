@@ -10,7 +10,6 @@ import {
   renderHistory,
 } from "./view.js";
 
-let isFirstRender = true;
 
 const createCard = ({ hex, negativeHex }) => {
   const cardNode = document.createElement("div");
@@ -52,7 +51,7 @@ const updateHistory = (hex, negativeHex) => {
   generationsHistory.push(historyObject);
   setGenerationsHistory(generationsHistory);
 
-  renderHistory(isFirstRender, generationsHistory);
+  renderHistory(generationsHistory);
 };
 
 const renderBody = () => {

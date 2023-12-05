@@ -3,6 +3,8 @@ import { createCard } from "./controller.js";
 const titleNode = document.querySelector(".hex-title");
 const historyTrackNode = document.querySelector(".history-track");
 
+let isFirstRender = true;
+
 const updateFavicon = (hexColor, negativeHexColor) => {
   const favicon = document.getElementById("favicon");
 
@@ -19,13 +21,14 @@ const updateFavicon = (hexColor, negativeHexColor) => {
   favicon.href = svgDataUri;
 };
 
-const renderHistory = (isFirstRender, generationsHistory) => {
+const renderHistory = (generationsHistory) => {
   if (isFirstRender) {
     generationsHistory.forEach((el) => {
       const historyCardNode = createCard(el);
       historyTrackNode.appendChild(historyCardNode);
     });
     historyTrackNode.scrollLeft = -historyTrackNode.scrollWidth;
+    isFirstRender = false
   } else {
     const latestElement = generationsHistory[generationsHistory.length - 1];
     const historyCardNode = createCard(latestElement);
