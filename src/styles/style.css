@@ -11,6 +11,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 h1 {
@@ -21,5 +22,26 @@ h1 {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  /* flex-grow: 1; */
+  margin: auto;
 }
 
+.his-text {
+  padding: 6px 16px;
+}
+
+.his-card {
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.history-track {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 8px;
+  padding: 16px 16px 80px;
+  max-width: 100%;
+  overflow: scroll;
+}

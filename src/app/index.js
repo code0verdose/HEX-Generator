@@ -1,4 +1,5 @@
 const titleNode = document.querySelector(".hex-title");
+const historyTrackNode = document.querySelector(".history-track");
 
 const dictionaryHex = [
   "0",
@@ -18,6 +19,8 @@ const dictionaryHex = [
   "E",
   "F",
 ];
+
+const generationsHistory = [];
 
 function generateHex() {
   const res = [];
@@ -60,12 +63,39 @@ function updateFavicon(hexColor) {
     </svg>
   `;
 
-
   // Convert the SVG string to a data URI
   const svgDataUri = `data:image/svg+xml;base64,${btoa(svgString)}`;
 
   // Set the data URI as the href for the favicon
   favicon.href = svgDataUri;
+}
+
+function updateHistory(hex, negativeHex) {
+  generationsHistory.push({
+    hex,
+    negativeHex,
+    timestamp: Date.now(),
+  });
+
+  renderHistory()
+}
+
+function createCard({ hex, negativeHex }) {
+  const cardNode = document.createElement("div");
+  cardNode.className = 'his-card'
+
+  cardNode.innerHTML = `<p class="his-text" style="background: ${hex}"><strong>${hex.toUpperCase()}</strong></p>
+                        <p class="his-text" style="background: ${negativeHex}"><strong>${negativeHex.toUpperCase()}</strong></p>`;
+
+  return cardNode;
+}
+
+function renderHistory() {
+  historyTrackNode.innerHTML = ''
+  generationsHistory.forEach((el) => {
+    const historyCardNode = createCard(el);
+    historyTrackNode.append(historyCardNode);
+  });
 }
 
 function renderBody() {
@@ -77,6 +107,8 @@ function renderBody() {
 
   titleNode.textContent = hex;
   titleNode.style.color = negativeHex;
+
+  updateHistory(hex, negativeHex);
 
   document.title = `${hex} - HEX Generator`;
   updateFavicon(hex);
