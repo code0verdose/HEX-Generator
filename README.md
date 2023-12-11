@@ -23,7 +23,7 @@ HEX Generator — это веб-приложение, которое генер�
 1. Клонируйте репозиторий:
 
    ```bash
-   git clone https://github.com/your-username/hex-generator.git
+   git clone https://github.com/code0verdose/HEX-Generator.git
    ```
 
 2. Откройте файл `index.html` в вашем браузере.
